@@ -68,4 +68,4 @@ obs.max_y = 4;
 obs.min_r = 0.5;
 obs.max_r = 0.5;
 
-random_obstacles("../csv/obstacles.csv", obs, 25);
+random_obstacles("../csv/obstacles.csv", obs, 3);
