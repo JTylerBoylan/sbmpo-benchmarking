@@ -11,13 +11,13 @@ clc
 runs = 1;
 
 params = struct;
-params.max_iterations = 50000;
-params.max_generations = 100;
-params.horizon_time = 0.5;
+params.max_iterations = 300000;
+params.max_generations = 1000;
+params.horizon_time = 0.25;
 params.num_states = 3;
 params.num_controls = 2;
-params.grid_resolution = [0.015; 0.015; pi/90];
-params.start_state = [-5; -5; pi/4];
+params.grid_resolution = [0.10; 0.10; pi/16*params.horizon_time];
+params.start_state = [-5; -5; 0];
 params.goal_state = [5; 5; 0];
 params.branchout_factor = 10;
 params.branchouts = [
@@ -48,7 +48,7 @@ obs.min_x = 0;
 obs.max_x = 0;
 obs.min_y = 0;
 obs.max_y = 0;
-obs.min_r = 1;
-obs.max_r = 1;
+obs.min_r = 2.5;
+obs.max_r = 2.5;
 
 random_obstacles("../csv/obstacles.csv", obs, runs);

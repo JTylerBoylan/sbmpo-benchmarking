@@ -24,7 +24,7 @@ int main (int argc, char ** argv) {
     // Change benchmark parameters
     benchmarker.model()->set_body_radius(0.125f);
     benchmarker.model()->set_goal_threshold(0.5f);
-    benchmarker.set_runs_per_param(1);
+    benchmarker.set_runs_per_param(50);
 
     // Run benchmark (saves to csv folder)
     benchmarker.benchmark();

@@ -7,9 +7,9 @@ close all
 
 % -------------
 % SAVED RESULT
-stats = sbmpo_stats("../csv/saved/stats_GR00105_HT0010375_75x75_25obs.csv");
-horizon_time = linspace(0.01, 0.5, 75);
-grid_resolution_xy = linspace(0.01, 0.375, 75);
+stats = sbmpo_stats("../csv/saved/stats_HT00505_GR010375_75x75_single.csv");
+horizon_time = linspace(0.05, 0.5, 75);
+grid_resolution_xy = linspace(0.1, 0.375, 75);
 grid_resolution_q = 0.1963 * horizon_time;
 % -------------
 
@@ -45,25 +45,26 @@ cost = reshape(cost, shape).';
 success_rate = reshape(success_rate, shape).';
 exit_code = reshape(exit_code, shape).';
 
- success_filter = success_rate == 0;
- cost_filter = cost > 100.0 | cost < 0;
- guideline1_filter = Y > 2/sqrt(2).*X;
-% 
- %cost(success_filter | cost_filter | guideline1_filter) = NaN;
- %time_us(success_filter | cost_filter | guideline1_filter) = NaN;
- %num_iters(success_filter | cost_filter | guideline1_filter) = NaN;
+success_filter = success_rate == 0;
+cost_filter = cost > 17.0 | cost < 0;
+guideline1_filter = Y > 2/sqrt(2).*X;
+
+% FILTERS
+cost(success_filter | cost_filter | guideline1_filter) = NaN;
+time_us(success_filter | cost_filter | guideline1_filter) = NaN;
+num_iters(success_filter | cost_filter | guideline1_filter) = NaN;
 
 figure
 hold on
 grid on
-contourf(X,Y,time_us*1E-6)
+contourf(X,Y,log10(time_us*1E-6))
 title("Computation Time (s)")
 ylabel("Grid Resolution")
 xlabel("Sampling Horizon Time")
 colorbar
-%plot(x_limits, sqrt(2)*0.5*x_limits, '--r', 'LineWidth',3)
-%plot(x_limits, sqrt(2)*1.0*x_limits, '--g', 'LineWidth',3)
-%plot(x_limits, 2*1.0*x_limits, '--k', 'LineWidth',3)
+plot(x_limits, sqrt(2)*0.5*x_limits, '--r', 'LineWidth',3)
+plot(x_limits, sqrt(2)*1.0*x_limits, '--g', 'LineWidth',3)
+plot(x_limits, 2*1.0*x_limits, '--k', 'LineWidth',3)
 %plot([0.5 0.5], [0.1 0.5], '--k', 'LineWidth', 3)
 axis(limits)
 %saveas(gcf, 'figures/time_050_01768.fig')
@@ -76,9 +77,9 @@ title("Cost")
 ylabel("Grid Resolution")
 xlabel("Sampling Horizon Time")
 colorbar
-%plot(x_limits, sqrt(2)*0.5*x_limits, '--r', 'LineWidth',3)
-%plot(x_limits, sqrt(2)*1.0*x_limits, '--g', 'LineWidth',3)
-%plot(x_limits, 2*1.0*x_limits, '--k', 'LineWidth',3)
+plot(x_limits, sqrt(2)*0.5*x_limits, '--r', 'LineWidth',3)
+plot(x_limits, sqrt(2)*1.0*x_limits, '--g', 'LineWidth',3)
+plot(x_limits, 2*1.0*x_limits, '--k', 'LineWidth',3)
 %plot([0.5 0.5], [0.1 0.5], '--k', 'LineWidth', 3)
 axis(limits)
 %saveas(gcf, 'figures/cost_050_01768.fig')
@@ -86,14 +87,14 @@ axis(limits)
 figure
 hold on
 grid on
-contourf(X,Y, num_iters)
+contourf(X,Y, log10(num_iters))
 title("Iterations")
 ylabel("Grid Resolution")
 xlabel("Sampling Horizon Time")
 colorbar
-%plot(x_limits, sqrt(2)*0.5*x_limits, '--r', 'LineWidth',3)
-%plot(x_limits, sqrt(2)*1.0*x_limits, '--g', 'LineWidth',3)
-%plot(x_limits, 2*1.0*x_limits, '--k', 'LineWidth',3)
+plot(x_limits, sqrt(2)*0.5*x_limits, '--r', 'LineWidth',3)
+plot(x_limits, sqrt(2)*1.0*x_limits, '--g', 'LineWidth',3)
+plot(x_limits, 2*1.0*x_limits, '--k', 'LineWidth',3)
 %plot([0.5 0.5], [0.1 0.5], '--k', 'LineWidth', 3)
 axis(limits)
 %saveas(gcf, 'figures/iter_050_01768.fig')
@@ -105,9 +106,9 @@ contourf(X,Y,success_rate .* 100)
 title("Success Rate (%)")
 ylabel("Grid Resolution")
 xlabel("Sampling Horizon Time")
-%plot(x_limits, sqrt(2)*0.5*x_limits, '--r', 'LineWidth',3)
-%plot(x_limits, sqrt(2)*1.0*x_limits, '--g', 'LineWidth',3)
-%plot(x_limits, 2*1.0*x_limits, '--k', 'LineWidth',3)
+plot(x_limits, sqrt(2)*0.5*x_limits, '--r', 'LineWidth',3)
+plot(x_limits, sqrt(2)*1.0*x_limits, '--g', 'LineWidth',3)
+plot(x_limits, 2*1.0*x_limits, '--k', 'LineWidth',3)
 %plot([0.5 0.5], [0.1 0.5], '--k', 'LineWidth', 3)
 axis(limits)
 box(axes1,'on')
@@ -123,9 +124,9 @@ title("Exit Code")
 ylabel("Grid Resolution")
 xlabel("Sampling Horizon Time")
 colorbar
-%plot(x_limits, sqrt(2)*0.5*x_limits, '--r', 'LineWidth',3)
-%plot(x_limits, sqrt(2)*1.0*x_limits, '--g', 'LineWidth',3)
-%plot(x_limits, 2*1.0*x_limits, '--k', 'LineWidth',3)
+plot(x_limits, sqrt(2)*0.5*x_limits, '--r', 'LineWidth',3)
+plot(x_limits, sqrt(2)*1.0*x_limits, '--g', 'LineWidth',3)
+plot(x_limits, 2*1.0*x_limits, '--k', 'LineWidth',3)
 %plot([0.5 0.5], [0.1 0.5], '--k', 'LineWidth', 3)
 axis(limits)
 %saveas(gcf, 'figures/iter_050_01768.fig')

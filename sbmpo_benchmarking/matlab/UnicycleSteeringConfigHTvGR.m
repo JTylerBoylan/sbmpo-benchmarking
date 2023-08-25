@@ -8,7 +8,7 @@ close all
 %% Parameters
 
 params = struct;
-params.max_iterations = 100000;
+params.max_iterations = 1000000;
 params.max_generations = 1000;
 % params.horizon_time = 0.5;
 params.num_states = 3;
@@ -30,8 +30,8 @@ params.branchouts = [
     [1.0; 0.3927]
     ];
 
-horizon_time = linspace(0.01, 0.5, 75);
-grid_resolution_xy = linspace(0.01, 0.375, 75);
+horizon_time = linspace(0.05, 0.5, 75);
+grid_resolution_xy = linspace(0.1, 0.375, 75);
 
 for gr = 1:length(grid_resolution_xy)
     for ht = 1:length(horizon_time)
@@ -59,13 +59,13 @@ goal_state = [5, 5];
 %% Obstacles
 
 obs = struct;
-obs.min_n = 5;
-obs.max_n = 5;
-obs.min_x = -4;
-obs.max_x = 4;
-obs.min_y = -4;
-obs.max_y = 4;
-obs.min_r = 0.5;
-obs.max_r = 0.5;
+obs.min_n = 1;
+obs.max_n = 1;
+obs.min_x = 0;
+obs.max_x = 0;
+obs.min_y = 0;
+obs.max_y = 0;
+obs.min_r = 2.5;
+obs.max_r = 2.5;
 
-random_obstacles("../csv/obstacles.csv", obs, 25);
+random_obstacles("../csv/obstacles.csv", obs, 1);
