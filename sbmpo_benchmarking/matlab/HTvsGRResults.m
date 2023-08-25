@@ -49,9 +49,9 @@ exit_code = reshape(exit_code, shape).';
  cost_filter = cost > 100.0 | cost < 0;
  guideline1_filter = Y > 2/sqrt(2).*X;
 % 
- cost(success_filter | cost_filter | guideline1_filter) = NaN;
- time_us(success_filter | cost_filter | guideline1_filter) = NaN;
- num_iters(success_filter | cost_filter | guideline1_filter) = NaN;
+ %cost(success_filter | cost_filter | guideline1_filter) = NaN;
+ %time_us(success_filter | cost_filter | guideline1_filter) = NaN;
+ %num_iters(success_filter | cost_filter | guideline1_filter) = NaN;
 
 figure
 hold on
@@ -61,9 +61,9 @@ title("Computation Time (s)")
 ylabel("Grid Resolution")
 xlabel("Sampling Horizon Time")
 colorbar
-plot(x_limits, sqrt(2)*0.5*x_limits, '--r', 'LineWidth',3)
-plot(x_limits, sqrt(2)*1.0*x_limits, '--g', 'LineWidth',3)
-plot(x_limits, 2*1.0*x_limits, '--k', 'LineWidth',3)
+%plot(x_limits, sqrt(2)*0.5*x_limits, '--r', 'LineWidth',3)
+%plot(x_limits, sqrt(2)*1.0*x_limits, '--g', 'LineWidth',3)
+%plot(x_limits, 2*1.0*x_limits, '--k', 'LineWidth',3)
 %plot([0.5 0.5], [0.1 0.5], '--k', 'LineWidth', 3)
 axis(limits)
 %saveas(gcf, 'figures/time_050_01768.fig')
@@ -76,9 +76,9 @@ title("Cost")
 ylabel("Grid Resolution")
 xlabel("Sampling Horizon Time")
 colorbar
-plot(x_limits, sqrt(2)*0.5*x_limits, '--r', 'LineWidth',3)
-plot(x_limits, sqrt(2)*1.0*x_limits, '--g', 'LineWidth',3)
-plot(x_limits, 2*1.0*x_limits, '--k', 'LineWidth',3)
+%plot(x_limits, sqrt(2)*0.5*x_limits, '--r', 'LineWidth',3)
+%plot(x_limits, sqrt(2)*1.0*x_limits, '--g', 'LineWidth',3)
+%plot(x_limits, 2*1.0*x_limits, '--k', 'LineWidth',3)
 %plot([0.5 0.5], [0.1 0.5], '--k', 'LineWidth', 3)
 axis(limits)
 %saveas(gcf, 'figures/cost_050_01768.fig')
@@ -91,9 +91,9 @@ title("Iterations")
 ylabel("Grid Resolution")
 xlabel("Sampling Horizon Time")
 colorbar
-plot(x_limits, sqrt(2)*0.5*x_limits, '--r', 'LineWidth',3)
-plot(x_limits, sqrt(2)*1.0*x_limits, '--g', 'LineWidth',3)
-plot(x_limits, 2*1.0*x_limits, '--k', 'LineWidth',3)
+%plot(x_limits, sqrt(2)*0.5*x_limits, '--r', 'LineWidth',3)
+%plot(x_limits, sqrt(2)*1.0*x_limits, '--g', 'LineWidth',3)
+%plot(x_limits, 2*1.0*x_limits, '--k', 'LineWidth',3)
 %plot([0.5 0.5], [0.1 0.5], '--k', 'LineWidth', 3)
 axis(limits)
 %saveas(gcf, 'figures/iter_050_01768.fig')
@@ -105,9 +105,9 @@ contourf(X,Y,success_rate .* 100)
 title("Success Rate (%)")
 ylabel("Grid Resolution")
 xlabel("Sampling Horizon Time")
-plot(x_limits, sqrt(2)*0.5*x_limits, '--r', 'LineWidth',3)
-plot(x_limits, sqrt(2)*1.0*x_limits, '--g', 'LineWidth',3)
-plot(x_limits, 2*1.0*x_limits, '--k', 'LineWidth',3)
+%plot(x_limits, sqrt(2)*0.5*x_limits, '--r', 'LineWidth',3)
+%plot(x_limits, sqrt(2)*1.0*x_limits, '--g', 'LineWidth',3)
+%plot(x_limits, 2*1.0*x_limits, '--k', 'LineWidth',3)
 %plot([0.5 0.5], [0.1 0.5], '--k', 'LineWidth', 3)
 axis(limits)
 box(axes1,'on')
@@ -123,9 +123,9 @@ title("Exit Code")
 ylabel("Grid Resolution")
 xlabel("Sampling Horizon Time")
 colorbar
-plot(x_limits, sqrt(2)*0.5*x_limits, '--r', 'LineWidth',3)
-plot(x_limits, sqrt(2)*1.0*x_limits, '--g', 'LineWidth',3)
-plot(x_limits, 2*1.0*x_limits, '--k', 'LineWidth',3)
+%plot(x_limits, sqrt(2)*0.5*x_limits, '--r', 'LineWidth',3)
+%plot(x_limits, sqrt(2)*1.0*x_limits, '--g', 'LineWidth',3)
+%plot(x_limits, 2*1.0*x_limits, '--k', 'LineWidth',3)
 %plot([0.5 0.5], [0.1 0.5], '--k', 'LineWidth', 3)
 axis(limits)
 %saveas(gcf, 'figures/iter_050_01768.fig')
