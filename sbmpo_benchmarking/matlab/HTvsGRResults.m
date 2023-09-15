@@ -3,14 +3,14 @@
 
 close all
 
-%stats = sbmpo_stats("../csv/stats.csv");
+stats = sbmpo_stats("../csv/stats.csv");
 
 % -------------
 % SAVED RESULT
-stats = sbmpo_stats("../csv/saved/stats_HT00505_GR010375_75x75_single.csv");
-horizon_time = linspace(0.05, 0.5, 75);
-grid_resolution_xy = linspace(0.1, 0.375, 75);
-grid_resolution_q = 0.1963 * horizon_time;
+% stats = sbmpo_stats("../csv/saved/stats_HT00505_GR010375_75x75_single.csv");
+% horizon_time = linspace(0.05, 0.5, 75);
+% grid_resolution_xy = linspace(0.1, 0.375, 75);
+% grid_resolution_q = 0.1963 * horizon_time;
 % -------------
 
 shape = [length(horizon_time) length(grid_resolution_xy)];
